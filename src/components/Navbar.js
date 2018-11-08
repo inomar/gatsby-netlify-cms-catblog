@@ -1,16 +1,18 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import styled from 'styled-components'
+
+const BlogTitle = styled.h1`
+  color: blue;
+`
 
 const Navbar = () => (
   <nav className="navbar is-transparent">
     <div className="container">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
-          <figure className="image">
-            <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-          </figure>
+          <BlogTitle >不定期更新症候群</BlogTitle>
         </Link>
       </div>
       <div className="navbar-start">
