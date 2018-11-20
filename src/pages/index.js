@@ -10,37 +10,23 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
+        {posts.map(({ node: post }) => (
+          <section className="shadow mb-3 bg-white rounded" style={{backgroundImage: "url(http://placeimg.com/726/250/animals)", height: "250px", position: "relative" }}>
+            <Link to={post.fields.slug} style={{display: "block", height: "100%"}} >
+              <div className="p-2" style={{color: "#fff", position: "absolute", bottom: '0', left: '0'}}>
+                <time datetime={post.frontmatter.date}>{post.frontmatter.date}</time>
+                <h2>{post.frontmatter.title}</h2>
+                <div className="tags">
+                {
+                  post.frontmatter.tags.map(tag => (
+                    <span key={tag + `tag`} className="badge badge-pill badge-primary mr-1">{tag}</span>
+                  ))
+                }
                 </div>
-              ))}
-          </div>
-        </section>
+            </div>    
+            </Link >
+          </section>
+        ))}
       </Layout>
     )
   }
@@ -69,8 +55,9 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            tags
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "YYYY.MM.DD")
           }
         }
       }

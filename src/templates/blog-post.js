@@ -17,31 +17,20 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
+    <section className="shadow mb-3 bg-white rounded" style={{backgroundImage: "url(http://placeimg.com/726/250/animals)", height: "250px", position: "relative" }}>
+      <a href="./page.html" style={{display: "block", height: "100%"}} >
+          <div className="p-2 title title-positon">
+              <time datetime="2018-11-10">2018/11/10</time>
+              <h2>{title}</h2>
+              <div className="tags">
+                {tags.map(tag => (
+                  <span key={tag + `tag`} className="badge badge-pill badge-primary">
+                    <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                  </span>
+                ))}
               </div>
-            ) : null}
           </div>
-        </div>
-      </div>
+      </a>
     </section>
   )
 }
@@ -93,3 +82,31 @@ export const pageQuery = graphql`
     }
   }
 `
+
+    
+    {/* <section className="section">
+      {helmet || ''}
+      <div className="container content">
+        <div className="columns">
+          <div className="column is-10 is-offset-1">
+            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+              {title}
+            </h1>
+            <p>{description}</p>
+            <PostContent content={content} />
+            {tags && tags.length ? (
+              <div style={{ marginTop: `4rem` }}>
+                <h4>Tags</h4>
+                <ul className="taglist">
+                  {tags.map(tag => (
+                    <li key={tag + `tag`}>
+                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </section> */}
