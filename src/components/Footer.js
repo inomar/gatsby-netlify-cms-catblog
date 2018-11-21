@@ -5,7 +5,7 @@ const Footer = ({data}) => (
         <div class="container">
             <div class="row">
                 <div class="p-2">
-                    コピーライト©つるべ
+                    Copyright &copy; inomar. All right All Rights Reserved.
                 </div>
             </div>
         </div>
